@@ -1,7 +1,7 @@
 package com.meetme.meetme.controller;
 
 import com.meetme.meetme.model.UserDTO;
-import com.meetme.meetme.service.UserService;
+import com.meetme.meetme.service.RegistrationService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,16 +10,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/registration")
 @AllArgsConstructor
+@RestController
+@RequestMapping(path = "/registration")
 public class RegistrationController {
-    private final UserService userService;
+
+    private final RegistrationService registrationService;
 
     @PostMapping
-    public ResponseEntity signup(@RequestBody UserDTO userDTO){
-        UserDTO savedUser = userService.saveNewUser(userDTO);
+    public ResponseEntity<String> register(@RequestBody UserDTO userDTO) {
+        registrationService.register(userDTO);
 
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity<>("User registered success!", HttpStatus.OK);
     }
 }

@@ -1,7 +1,6 @@
 package com.meetme.meetme.service;
 
-import com.meetme.meetme.model.UserDTO;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface UserService {
-    UserDTO saveNewUser(UserDTO userDTO);
+public interface UserService extends UserDetailsService {
 }
