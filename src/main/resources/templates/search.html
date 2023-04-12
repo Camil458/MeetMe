@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:insert="fragments/base.html :: head"></head>
+
+<body>
+  <nav th:insert="fragments/base.html :: navbar"></nav>
+
+  <form action="#" th:action="@{/search/save}" th:object="${searchDTO}" method="POST">
+    <input type="text" th:field="*{query}" class="form-control" placeholder="Query">
+
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+</body>
