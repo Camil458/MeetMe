@@ -1,5 +1,6 @@
 package com.meetme.meetme.entity;
 
+import com.meetme.meetme._enum.EventType;
 import com.meetme.meetme._enum.ImageType;
 import jakarta.persistence.*;
 import lombok.*;
@@ -59,4 +60,8 @@ public class Event {
 
     @Column(name="link", nullable=true)
     private String link;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="event_type", nullable=true)
+    private EventType eventType;
 }
