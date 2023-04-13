@@ -1,5 +1,6 @@
 package com.meetme.meetme.model;
 
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,8 +16,8 @@ public class UserDTO implements UserDetails {
     private String email;
     private String password;
     private Role role;
-    private Boolean locked;
-    private Boolean enabled;
+    private Boolean locked = false;
+    private Boolean enabled = false;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
