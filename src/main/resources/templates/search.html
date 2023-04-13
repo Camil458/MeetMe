@@ -7,9 +7,32 @@
   <nav th:insert="fragments/base.html :: navbar"></nav>
 
   <form action="#" th:action="@{/search/save}" th:object="${searchDTO}" method="POST">
-    <input type="text" th:field="*{query}" class="form-control" placeholder="Query">
+    <div class="row mx-2 my-3">
+      <div class="col-4">
+        <input type="text" th:field="*{query}" class="form-control" placeholder="Search for an event">
+      </div>
 
-    <button type="submit" class="btn btn-primary">Search</button>
+      <div class="col-2">
+        <select name="eventType" class="form-control">
+          <option class="text-muted" disabled selected value>Event type</option>
+          <option th:each="eType : ${T(com.meetme.meetme._enum.EventType).values()}"
+                  th:value="${eType}"
+                  th:text="${eType}"></option>
+        </select>
+      </div>
+
+      <div class="col-2">
+        <input id="locationInput" type="text" th:field="*{locationString}" class="form-control" placeholder="Place" size="50">
+      </div>
+
+      <div class="col-2">
+        <input type="date" th:field="*{eventDate}" class="form-control" placeholder="Date">
+      </div>
+
+      <div class="col-2">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </div>
   </form>
 
 </body>
