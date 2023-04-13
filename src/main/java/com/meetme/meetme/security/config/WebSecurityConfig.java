@@ -1,6 +1,6 @@
 package com.meetme.meetme.security.config;
 
-import com.meetme.meetme.service.UserService;
+import com.meetme.meetme.service.MyUserDetailsService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-    private final UserService userService;
+    private final MyUserDetailsService myUserDetailsService;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {

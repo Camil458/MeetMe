@@ -1,6 +1,7 @@
 package com.meetme.meetme.model;
 
-import lombok.Builder;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,12 +13,24 @@ import java.util.Collections;
 @Data
 public class UserDTO implements UserDetails {
     private Long id;
+    @NotNull
+    @NotEmpty
     private String username;
+    @NotNull
+    @NotEmpty
+    private String firstName;
+    @NotNull
+    @NotEmpty
+    private String lastName;
+    @NotNull
+    @NotEmpty
     private String email;
+    @NotNull
+    @NotEmpty
     private String password;
     private Role role;
-    private Boolean locked = false;
-    private Boolean enabled = false;
+    private Boolean locked;
+    private Boolean enabled;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -45,9 +58,11 @@ public class UserDTO implements UserDetails {
         return enabled;
     }
 
-    public UserDTO(String username, String email, String password, Role role, Boolean locked, Boolean enabled) {
+    public UserDTO(String username, String email, String firstName, String lastName, String password, Role role, Boolean locked, Boolean enabled) {
         this.username = username;
         this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password = password;
         this.role = role;
         this.locked = locked;

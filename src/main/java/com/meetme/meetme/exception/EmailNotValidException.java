@@ -6,6 +6,6 @@ public class EmailNotValidException extends RuntimeException{
     }
 
     public EmailNotValidException() {
-        super("Teh email address is not valid");
+        super("The email address is not valid");
     }
 }
