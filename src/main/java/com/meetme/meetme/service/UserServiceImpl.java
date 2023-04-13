@@ -33,36 +33,3 @@ public class UserServiceImpl implements UserService {
         return userMapper.userToUserDto(userRepository.save(userMapper.userDtoToUser(userDTO)));
     }
 }
-
-/*
-@Service
-@AllArgsConstructor
-public class UserServiceImpl implements UserService {
-
-    private final UserRepository userRepository;
-    private final UserMapper userMapper;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    private final static String USERNAME_NOT_FOUND_MSG = "%s not found";
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userMapper.userToUserDto(userRepository.findByUsername(username)
-                .orElseThrow(() ->
-                        new UsernameNotFoundException(
-                                String.format(USERNAME_NOT_FOUND_MSG, username))));
-    }
-
-    public UserDTO registerNewUserAccount(UserDTO userDTO) throws UserAlreadyExistException {
-
-        if(userRepository.findByEmail(userDTO.getEmail()).isPresent()){
-            throw new UserAlreadyExistException(userDTO.getEmail());
-        }
-
-        String encodedPassword = bCryptPasswordEncoder.encode(userDTO.getPassword());
-        userDTO.setPassword(encodedPassword);
-
-        return userMapper.userToUserDto(userRepository.save(userMapper.userDtoToUser(userDTO)));
-    }
-}
- */
