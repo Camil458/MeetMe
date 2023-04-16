@@ -57,4 +57,16 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(errorObject, HttpStatus.GONE);
     }
+
+    @ExceptionHandler(EmailFailedToSendException.class)
+    public ResponseEntity<ErrorObject> TokenExpiredException(EmailFailedToSendException e) {
+
+        ErrorObject errorObject = ErrorObject.builder()
+                .statusCode(HttpStatus.GONE.value())
+                .message(e.getMessage())
+                .timestamp(new Date())
+                .build();
+
+        return new ResponseEntity<>(errorObject, HttpStatus.BAD_REQUEST);
+    }
 }

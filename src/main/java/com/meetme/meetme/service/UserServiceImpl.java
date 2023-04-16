@@ -7,6 +7,7 @@ import com.meetme.meetme.model.Role;
 import com.meetme.meetme.model.UserDTO;
 import com.meetme.meetme.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,8 @@ public class UserServiceImpl implements UserService {
     public User registerNewUserAccount(UserDTO userDTO) throws UserAlreadyExistException {
 
         if(userRepository.findByEmail(userDTO.getEmail()).isPresent()){
+           // TODO: resend the email if the credentials are the same
+
             throw new UserAlreadyExistException(userDTO.getEmail());
         }
 
