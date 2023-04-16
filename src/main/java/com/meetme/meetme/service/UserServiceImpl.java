@@ -1,5 +1,6 @@
 package com.meetme.meetme.service;
 
+import com.meetme.meetme.entity.User;
 import com.meetme.meetme.exception.UserAlreadyExistException;
 import com.meetme.meetme.mapper.UserMapper;
 import com.meetme.meetme.model.Role;
@@ -17,7 +18,7 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserDTO registerNewUserAccount(UserDTO userDTO) throws UserAlreadyExistException {
+    public User registerNewUserAccount(UserDTO userDTO) throws UserAlreadyExistException {
 
         if(userRepository.findByEmail(userDTO.getEmail()).isPresent()){
             throw new UserAlreadyExistException(userDTO.getEmail());
@@ -30,6 +31,11 @@ public class UserServiceImpl implements UserService {
         String encodedPassword = bCryptPasswordEncoder.encode(userDTO.getPassword());
         userDTO.setPassword(encodedPassword);
 
-        return userMapper.userToUserDto(userRepository.save(userMapper.userDtoToUser(userDTO)));
+        return userRepository.save(userMapper.userDtoToUser(userDTO));
+    }
+
+    @Override
+    public void enableUser(String email) {
+        userRepository.enableUser(email);
     }
 }

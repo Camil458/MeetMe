@@ -33,4 +33,28 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(errorObject, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(TokenNotFoundException.class)
+    public ResponseEntity<ErrorObject> TokenNotFoundException(TokenNotFoundException e) {
+
+        ErrorObject errorObject = ErrorObject.builder()
+                .statusCode(HttpStatus.NOT_FOUND.value())
+                .message(e.getMessage())
+                .timestamp(new Date())
+                .build();
+
+        return new ResponseEntity<>(errorObject, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(TokenExpiredException.class)
+    public ResponseEntity<ErrorObject> TokenExpiredException(TokenExpiredException e) {
+
+        ErrorObject errorObject = ErrorObject.builder()
+                .statusCode(HttpStatus.GONE.value())
+                .message(e.getMessage())
+                .timestamp(new Date())
+                .build();
+
+        return new ResponseEntity<>(errorObject, HttpStatus.GONE);
+    }
 }

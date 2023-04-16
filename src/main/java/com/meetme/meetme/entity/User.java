@@ -2,6 +2,7 @@ package com.meetme.meetme.entity;
 
 import com.meetme.meetme.model.Role;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Getter
