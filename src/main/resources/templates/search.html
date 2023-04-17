@@ -1,10 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:insert="fragments/base.html :: head"></head>
+<head>
+  <head th:replace="fragments/head.html :: head"></head>
+</head>
 
 <body>
-  <nav th:insert="fragments/base.html :: navbar"></nav>
+  <nav th:insert="fragments/navbar.html :: navbar"></nav>
 
   <form action="#" th:action="@{/search/save}" th:object="${searchDTO}" method="POST">
     <div class="row mx-2 my-3">
