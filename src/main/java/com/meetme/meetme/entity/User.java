@@ -1,12 +1,9 @@
 package com.meetme.meetme.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.meetme.meetme.model.Role;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -19,9 +16,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
+    private String firstName;
+    private String lastName;
     private String email;
     private String password;
-    private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
+    @Enumerated(EnumType.STRING)
+    private Role role;
+    private Boolean locked;
+    private Boolean enabled;
 
 }
