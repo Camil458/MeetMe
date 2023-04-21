@@ -1,5 +1,5 @@
 package com.meetme.meetme.email;
 
 public interface EmailSender {
-    void send(String to, String email);
+    void send(String email, String name, String link);
 }

@@ -2,7 +2,6 @@ package com.meetme.meetme.controller;
 
 import com.meetme.meetme.model.UserDTO;
 import com.meetme.meetme.service.RegistrationService;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
