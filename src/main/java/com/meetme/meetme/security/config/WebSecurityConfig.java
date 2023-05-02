@@ -23,6 +23,7 @@ public class WebSecurityConfig {
                 .csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/registration/**").permitAll()
+                .requestMatchers("/events/**").permitAll()
                 .anyRequest()
                 .authenticated().and().formLogin();
 
