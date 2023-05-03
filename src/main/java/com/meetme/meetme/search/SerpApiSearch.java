@@ -1,13 +1,12 @@
 package com.meetme.meetme.search;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.meetme.meetme.exception.SerpApiSearchException;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 public class SerpApiSearch {
 
@@ -104,29 +103,5 @@ public class SerpApiSearch {
     public JsonObject asJson(String content) {
         JsonElement element = gson.fromJson(content, JsonElement.class);
         return element.getAsJsonObject();
-    }
-
-    // return http search
-    public SerpApiHttpClient getClient() {
-        return this.search;
-    }
-
-    // get location
-    public JsonArray getLocation(String q, Integer limit) throws SerpApiSearchException {
-        Map<String, String> query = buildQuery("/locations.json", "json");
-        query.remove("output");
-        query.remove(API_KEY_NAME);
-        query.put("q", q);
-        query.put("limit", limit.toString());
-        String s = search.getResults(query);
-        return gson.fromJson(s, JsonArray.class);
-    }
-
-     // get account information using Account API
-    public JsonObject getAccount() throws SerpApiSearchException {
-        Map<String, String> query = buildQuery("/account", "json");
-        query.remove("output");
-        query.remove("q");
-        return asJson(search.getResults(query));
     }
 }
