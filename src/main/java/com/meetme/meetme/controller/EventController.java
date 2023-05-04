@@ -15,7 +15,7 @@ public class EventController {
     GoogleSearchService googleSearchService;
 
     @GetMapping
-    public ResponseEntity<String> getEvents(@RequestParam(value = "g") String q, @RequestParam(value = "date", required = false) String date) {
+    public ResponseEntity<String> getEvents(@RequestParam(value = "q") String q, @RequestParam(value = "date", required = false) String date) {
         if (date != null) {
             return ResponseEntity.ok(googleSearchService.search(q, date));
         } else {
