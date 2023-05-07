@@ -4,6 +4,7 @@ import com.meetme.meetme.service.MyUserDetailsService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,15 +25,18 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .cors().and()
-                .formLogin(form-> form
-                        .loginPage("/login")
-                        .permitAll())
                 .csrf().disable()
+                .logout()
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/registration/**").permitAll()
-                .requestMatchers("/events/**").permitAll()
-                .anyRequest()
-                .authenticated().and().formLogin();
+                .requestMatchers("/registration/**", "/login/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/events/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .httpBasic();
+
 
         return http.build();
     }
