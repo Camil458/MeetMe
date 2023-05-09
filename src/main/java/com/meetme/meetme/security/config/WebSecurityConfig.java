@@ -33,6 +33,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/registration/**", "/login/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/events/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
