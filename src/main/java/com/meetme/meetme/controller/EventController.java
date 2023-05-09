@@ -24,7 +24,7 @@ public class EventController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity addEvent(@RequestBody EventDto eventDto){
         eventService.saveNewEvent(eventDto);
         return new ResponseEntity(HttpStatus.OK);

@@ -20,10 +20,10 @@ public class Event {
     @JoinColumn(name = "user_id")
     private User user;
     private String description;
-    private String where;
-    private LocalDateTime when;
+    private String location;
+    private LocalDateTime date;
     private String photoLink;
-    private double Lon;
+    private double Lng;
     private double Lat;
     private String ticketInfo;
     private String link;

@@ -28,7 +28,6 @@ public class WebSecurityConfig {
                 .csrf().disable()
                 .logout()
                 .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers("/registration/**", "/login/**").permitAll()

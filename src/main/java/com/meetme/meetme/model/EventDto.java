@@ -22,13 +22,13 @@ public class EventDto {
 
     @NotNull
     @NotEmpty
-    private String where;
+    private String location;
 
     @NotNull
     @NotEmpty
-    private LocalDateTime when;
+    private LocalDateTime date;
     private String photoLink;
-    private double Lon;
+    private double Lng;
     private double Lat;
     private String ticketInfo;
     private String link;
