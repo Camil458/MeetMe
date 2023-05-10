@@ -4,8 +4,7 @@ import com.meetme.meetme.entity.User;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-
-import java.time.LocalDateTime;
+import org.json.JSONArray;
 
 @Data
 public class EventDto {
@@ -24,8 +23,8 @@ public class EventDto {
     @NotEmpty
     private String date;
     private String photoLink;
-    private float Lng;
-    private float Lat;
+    private double lng;
+    private double lat;
     private String ticketInfo;
     private String link;
 }

@@ -3,8 +3,6 @@ package com.meetme.meetme.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,8 +21,8 @@ public class Event {
     private String location;
     private String date;
     private String photoLink;
-    private float Lng;
-    private float Lat;
+    private double lng;
+    private double lat;
     private String ticketInfo;
     private String link;
 }

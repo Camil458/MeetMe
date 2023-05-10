@@ -65,6 +65,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public EventDto saveNewEvent(EventDto eventDto) {
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         eventDto.setUser(userService.getByUsername(authentication.getName()));
         return eventMapper.eventToEventDto(eventRepository.save(eventMapper.eventDtoToEvent(eventDto)));
