@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.io.InvalidClassException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -28,7 +29,7 @@ public class GoogleSearchService {
     @Value("${geo_api_key}")
     private String GEO_API_KEY;
 
-    public String search(String q, String date){
+    public String search(String q, String date, String page){
 
         Map<String, String> parameter = new HashMap<>();
 
@@ -40,6 +41,10 @@ public class GoogleSearchService {
         // advanced filters
         if (date != null){
             parameter.put("date", date);
+        }
+
+        if (page != null){
+            parameter.put("start", page);
         }
 
         GoogleSearch search = new GoogleSearch(parameter);

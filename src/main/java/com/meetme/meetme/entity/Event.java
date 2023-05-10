@@ -21,10 +21,10 @@ public class Event {
     private User user;
     private String description;
     private String location;
-    private LocalDateTime date;
+    private String date;
     private String photoLink;
-    private double Lng;
-    private double Lat;
+    private float Lng;
+    private float Lat;
     private String ticketInfo;
     private String link;
 }

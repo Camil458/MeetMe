@@ -16,11 +16,11 @@ public class EventController {
     EventService eventService;
 
     @GetMapping
-    public ResponseEntity<String> getEvents(@RequestParam(value = "q") String q, @RequestParam(value = "date", required = false) String date, @RequestParam(value = "priv", required = false) String priv, @RequestParam(value = "page", required = false) Integer page) {
+    public ResponseEntity<String> getEvents(@RequestParam(value = "q") String q, @RequestParam(value = "date", required = false) String date, @RequestParam(value = "priv", required = false) String priv, @RequestParam(value = "page", required = false) String page) {
         if (priv != null) {
             return ResponseEntity.ok(eventService.getEvents().toString());
         } else {
-            return ResponseEntity.ok(googleSearchService.search(q, date));
+            return ResponseEntity.ok(googleSearchService.search(q, date, page));
         }
     }
 
@@ -29,5 +29,4 @@ public class EventController {
         eventService.saveNewEvent(eventDto);
         return new ResponseEntity(HttpStatus.OK);
     }
-
 }

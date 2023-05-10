@@ -37,8 +37,7 @@ public class LoginController {
     @GetMapping("/logged")
     public Boolean isLogged(){
         try {
-            System.out.println((SecurityContextHolder.getContext().getAuthentication().getPrincipal()));
-            return true;
+            return SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails;
         } catch (Exception e){
             return false;
         }

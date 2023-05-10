@@ -34,7 +34,7 @@ public class WebSecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/events/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .httpBasic();
+                .formLogin();
 
 
         return http.build();
