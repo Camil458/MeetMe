@@ -7,4 +7,6 @@ public interface UserService {
     public User registerNewUserAccount(UserDTO userDTO);
 
     void enableUser(String email);
+
+    User getByUsername(String name);
 }

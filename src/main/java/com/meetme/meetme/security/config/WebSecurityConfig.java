@@ -28,14 +28,13 @@ public class WebSecurityConfig {
                 .csrf().disable()
                 .logout()
                 .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers("/registration/**", "/login/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/events/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .httpBasic();
+                .formLogin();
 
 
         return http.build();
