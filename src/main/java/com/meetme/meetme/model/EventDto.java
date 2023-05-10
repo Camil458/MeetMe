@@ -4,7 +4,6 @@ import com.meetme.meetme.entity.User;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import org.json.JSONArray;
 
 @Data
 public class EventDto {

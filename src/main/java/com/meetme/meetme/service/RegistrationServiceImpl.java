@@ -8,15 +8,18 @@ import com.meetme.meetme.exception.TokenExpiredException;
 import com.meetme.meetme.exception.TokenNotFoundException;
 import com.meetme.meetme.model.UserDTO;
 import com.meetme.meetme.security.EmailValidator;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class RegistrationServiceImpl implements RegistrationService {
+    @Value("${backend_url}")
+    private String BACKEND_URL;
     private final EmailValidator emailValidator;
     private final UserService userService;
     private final VerificationTokenService verificationTokenService;
@@ -42,7 +45,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         verificationTokenService.saveVerificationToken(verificationToken);
 
         // send email
-        String link = "http://localhost:8080/registration/confirm?token=" + token;
+        String link = BACKEND_URL + "registration/confirm?token=" + token;
         emailSender.send(savedUser.getEmail(), savedUser.getFirstName(), link);
     }
 
